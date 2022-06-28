@@ -1,10 +1,12 @@
-import './App.css';
+//import './App.css';
 import React from 'react';
 import {useState} from 'react'
 import Task from '../Task';
 import List from '../Task List';
 import Input from '../Input';
 import SubmitButton from '../Submit Button';
+import styles from './App.module.css'
+import DeleteButton from '../Delete Button';
 
 
 
@@ -15,46 +17,60 @@ const [input, setInput ] = useState(
 );
 const [task, setTask ]= useState({});
 const [list, setList ] = useState([]);
-const [id, setId] = useState(0)
-const [edittask, setEditTask]= useState()
-/*
-function handleChange(event){
-  const newInput = event.target.value
-  setInput (newInput);
-  console.log(input)
-  }
-*/
+const [editTask, setEditTask] = useState(null)
+const [editText,setEditText]= useState("")
+
+
 function submitTask(){
-  setId(id+1)
   const newTask = {id: new Date().getTime(), task: input} 
   console.log(newTask)
   setTask (newTask);
   setList (list =>[...list, task]);
-  console.log(id)
-  console.log(list)
-  //setInput("")
+
  } 
 
 
 function removeTask(id){
-  
   const newArr = list.filter((item)=> item.id !== id)
   console.log(newArr)
   setList(newArr)
 }
 
-function editTask(){
-
+function submitEdit(id){
+ const updatedTasks = [...list].map((task)=>{
+  if (task.id===id){
+    task.task = editText
+  }
+  return task
+ })
+ setList(updatedTasks)
+ setEditTask(null)
+ setEditText("")
 }
 
  return (
-    <div className="App">
-    <h1>To Do List</h1>
+    <div className={styles.App}>
+    <h1 className={styles.header}>To Do List</h1>
      <Input onChange={(e)=> setInput(e.target.value)} value={task}/>
-      <SubmitButton  onClick={submitTask}>Add Task</SubmitButton>
+      <button className={styles.button} onClick={submitTask}>Add Task</button>
       <List>
-          {list.map((item)=>{return <div><Task key={item.id} text={item.task} removeTask={()=>removeTask(item.id)} editTask={editTask}/>
+          {list.map((item)=>{return <div className ={styles.task} key={item.id}>
+
+          {editTask === item.id ?
+          (<input type="text" 
+                  onChange={(e)=> setEditText(e.target.value)} 
+                  value={editText}/>) 
+          :
+          (<Task text={item.task} />)}
+              
+          <button className={styles.button}  onClick={()=>removeTask(item.id)}>Done</button> 
           
+          {editTask=== item.id ? 
+          (<button className={styles.button} onClick ={()=> submitEdit(item.id)}>Submit </button>) 
+          :
+          (<button className={styles.button} onClick= {()=> setEditTask(item.id)}>Edit</button>)
+          
+          }
           </div>})}
       </List>
     </div>
