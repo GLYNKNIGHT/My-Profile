@@ -5,43 +5,57 @@ import Task from '../Task';
 import List from '../Task List';
 import Input from '../Input';
 import SubmitButton from '../Submit Button';
-import {nanoid} from 'nanoid'
- 
+
 
 
 function App(){
 
-const [input, setInput ] = useState("");
+const [input, setInput ] = useState(
+
+);
 const [task, setTask ]= useState({});
 const [list, setList ] = useState([]);
 const [id, setId] = useState(0)
-
- function handleChange(event){
- const newInput = event.target.value
- setInput (newInput);
- console.log(input)
- const newTask = {id:{id}, task: input}
- setTask (newTask);
- }
-
+const [edittask, setEditTask]= useState()
+/*
+function handleChange(event){
+  const newInput = event.target.value
+  setInput (newInput);
+  console.log(input)
+  }
+*/
 function submitTask(){
- setList (list =>[...list, task]);
- setId(id+1)
- console.log(list)
-} 
-  
+  setId(id+1)
+  const newTask = {id: new Date().getTime(), task: input} 
+  console.log(newTask)
+  setTask (newTask);
+  setList (list =>[...list, task]);
+  console.log(id)
+  console.log(list)
+  //setInput("")
+ } 
+
+
 function removeTask(id){
-  setList(list => [list.slice(0,id), list.slice(id+1)])
+  
+  const newArr = list.filter((item)=> item.id !== id)
+  console.log(newArr)
+  setList(newArr)
 }
 
+function editTask(){
 
+}
 
  return (
     <div className="App">
-     <Input onChange={handleChange}/>
-      <SubmitButton onClick={submitTask}>Add Task</SubmitButton>
+    <h1>To Do List</h1>
+     <Input onChange={(e)=> setInput(e.target.value)} value={task}/>
+      <SubmitButton  onClick={submitTask}>Add Task</SubmitButton>
       <List>
-          {list.map((item)=>{return <Task key ={item.id} text={item.task} removeTask={removeTask(item.id)}/>})}
+          {list.map((item)=>{return <div><Task key={item.id} text={item.task} removeTask={()=>removeTask(item.id)} editTask={editTask}/>
+          
+          </div>})}
       </List>
     </div>
   );
