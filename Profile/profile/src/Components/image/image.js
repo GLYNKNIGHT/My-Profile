@@ -1,7 +1,7 @@
-
+import image from '../App/image.jpg'
 
 export default function Image(){
 
-    return <img className="circle"  alt="Glyn"/>
+    return <img className="circle" src={image} alt="Glyn"/>
 
 }
