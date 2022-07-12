@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap');
 
 .App {
   text-align: center;
@@ -53,7 +53,7 @@ padding-left: 10vw;
 
 .body{
   background-color: white;
-  min-height: 50vh;
+  height: 40vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -65,7 +65,7 @@ padding-left: 10vw;
 .display{
   border-radius: 5px;
   background-color: #31343a;
-  min-height: 50vh;
+  min-height: 40vh;
   width: 32vw;
   display: flex;
   flex-direction: column;
@@ -75,16 +75,19 @@ padding-left: 10vw;
   padding-left: 1.5vw;
   padding-right: 1.5vw;
   font-size: 18px;
+  font-family: 'Mukta', sans-serif;
 }
 
 .display-links{
  display: flex;
- flex-direction: column;
- gap: 5vh;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-evenly;
+ padding-top: 3vh;
 }
 
 .selector{
-  min-height: 50vh;
+  min-height: 40vh;
   width: 35vw;
   display: flex;
   flex-direction: column;
@@ -98,11 +101,12 @@ padding-left: 10vw;
 .button{
   background-color: #31343a ;
   border-radius: 5px ;
-  height: 10vh;
+  height: 7vh;
   width: 35vw;
   color: white;
   font-size: calc(10px + 2vmin);
-  border: none
+  border: none;
+  font-family: 'Mukta', sans-serif;
 }
 
 .button:hover {
@@ -121,6 +125,7 @@ padding-left: 10vw;
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-color: #d9d9da;
   border-radius: 5px;
   margin-bottom: 50px;
@@ -128,11 +133,21 @@ padding-left: 10vw;
   padding: 5px;
   
 }
+.project-card-image{
+  width:14vw;
+  height:auto;
+}
 .project-card:hover {
   color: white;
   background-color: #31343a;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  
+
+}
+
+.form{
+  width:20vw;
+  display: flex;
+  flex-direction: column;
 }
 
 footer{

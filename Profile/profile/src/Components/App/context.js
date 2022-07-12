@@ -1,3 +1,4 @@
 import { createContext } from 'react';
 
-export const StyleContext = createContext("project-card");
+export const CardStyleContext = createContext("project-card");
+export const CardImgStyle = createContext("project-card-image")
