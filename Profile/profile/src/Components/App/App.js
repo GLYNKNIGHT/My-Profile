@@ -6,62 +6,52 @@ import Display from "../Display/display";
 import Image from "../image/image";
 import ModeSelector from "../ModeSelector/modeSelector"
 import Content from "../content";
-
+import ProjectDisplay from "../Project Display/projectdisplay";
 import Links from "../Links/links";
 
 function App() {
   const [display, setDisplay] = useState(Content[0]);
 
-function displayContent(id) {
+  function displayContent(id) {
     setDisplay(Content[id]);
   }
- 
-
-
 
   return (
-    <div>
+   <div>
+      <header className="header-container">
+        <Header className="header" />
+        <figure className="circle-container">
+          <Image className="cicrle" />
+        </figure>
+        <Links className="links-button" onClick={() => displayContent(3)}/>
+      </header>
 
-   <div className="header-container">
-        <Header className="header"/>
-        <div className="circle-container">
-        <Image className="cicrle" />
-        </div>
-          <Links className="links-button"/>
-    </div>
-
-    <div className="body">
-
-        <div className="display">
+      <main className="body">
+        <section className="display">
           <Display display={display} />
-        </div>
-        <div className="selector">
+        </section>
+        <section className="selector">
+          {Content.map((item) => {
+            return (
+              <Button
+                key= {item.id}
+                className="button"
+                section={item.title}
+                onClick={() => displayContent(item.id)}
+              />
+            );
+          })}
+        </section>
+      </main>
+      
+      {display.id === 1 ?  <section >
+          <ProjectDisplay className="project-display"/>
+        </section>:null}
+    
+      <footer>
         
-    <Button
-      className="button"
-      section="About me"
-      onClick={()=>displayContent(0)}
-    />
-    <Button
-      className="button"
-      section="My Projects"
-      onClick={()=>displayContent(1)}
-    />
-    <Button 
-      className="button" 
-      section="Experience" 
-      onClick={()=>displayContent(2)} 
-      />
-      <Button 
-      className="button" 
-      section="Connect" 
-      onClick={()=>displayContent(3)} 
-      />
-  </div>
-       
+      </footer>
       </div>
-      <footer><ModeSelector/></footer>
-    </div>
   );
 }
 

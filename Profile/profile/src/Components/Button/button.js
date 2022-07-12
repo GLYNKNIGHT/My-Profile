@@ -1,4 +1,5 @@
 export default function Button(props){
 
-return <button className="button" onClick={props.onClick}>{props.section}</button>
+return <button key={props.id} 
+className="button" onClick={props.onClick}>{props.section}</button>
 }

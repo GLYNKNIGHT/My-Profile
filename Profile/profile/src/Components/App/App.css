@@ -44,7 +44,7 @@
 display: flex;
 justify-content: space-between;
 width:13vw;
-padding-top:5vw ;
+padding-top:6vw ;
 padding-right: 10vw;
 padding-left: 10vw;
 
@@ -74,6 +74,13 @@ padding-left: 10vw;
   color: white;
   padding-left: 1.5vw;
   padding-right: 1.5vw;
+  font-size: 18px;
+}
+
+.display-links{
+ display: flex;
+ flex-direction: column;
+ gap: 5vh;
 }
 
 .selector{
@@ -101,6 +108,31 @@ padding-left: 10vw;
 .button:hover {
   background-color: #1d1f23;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.project-display{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;  
+}
+
+.project-card{
+  width:15vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-color: #d9d9da;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  box-shadow: 0px 5px 8px 0 rgba(0,0,0,0.24);
+  padding: 5px;
+  
+}
+.project-card:hover {
+  color: white;
+  background-color: #31343a;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  
 }
 
 footer{
