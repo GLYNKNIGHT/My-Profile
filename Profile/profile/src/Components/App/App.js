@@ -4,10 +4,12 @@ import Button from '../Button/button'
 import Header from "../Header/header";
 import Display from "../Display/display";
 import Image from "../image/image";
-import ModeSelector from "../ModeSelector/modeSelector"
 import Content from "../content";
-import ProjectDisplay from "../Project Display/projectdisplay";
 import Links from "../Links/links";
+
+
+
+
 
 function App() {
   const [display, setDisplay] = useState(Content[0]);
@@ -17,20 +19,18 @@ function App() {
   }
 
   return (
-   <div>
+   <div className="app">
       <header className="header-container">
+      <figure className="circle-container">
+            <Image className="circle" />
+        
+              </figure>
         <Header className="header" />
-        <figure className="circle-container">
-          <Image className="cicrle" />
-        </figure>
-        <Links className="links-button" onClick={() => displayContent(3)}/>
+         <Links className="links-button" onClick={() => displayContent(3)}/>
       </header>
 
       <main className="body">
-        <section className="display">
-          <Display display={display} />
-        </section>
-        <section className="selector">
+      <section className="selector">
           {Content.map((item) => {
             return (
               <Button
@@ -41,15 +41,20 @@ function App() {
               />
             );
           })}
+          
         </section>
+        <section className="display">
+          <Display display={display} />
+          
+        </section>
+     
+        
       </main>
       
-      {display.id === 1 ?  <section >
-          <ProjectDisplay className="project-display"/>
-        </section>:null}
+     
     
       <footer>
-        
+       
       </footer>
       </div>
   );

@@ -1,7 +1,7 @@
 
 
-export default function Header(props){
-return <header className="header">
+export default function Header({className}){
+return <header className={className}>
 <h1>Glyn Knight</h1>
 
 </header>

@@ -1,7 +1,7 @@
 
 
 const Projects = [
-{title: 'Maditation App',
+{title: 'Meditation App',
 link: "Link"
 },
 {title: 'ToDo',
@@ -13,8 +13,6 @@ link: "Link"
 {title: '1 Week Project',
 link: "Link"
 },
-{title: '4 Week Project',
-link: "Link"
-}
+
 ]
 export default Projects
